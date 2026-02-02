@@ -1,9 +1,359 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pablo Armijos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --hyrule-dark: #0a0f0d;
+            --hyrule-green: #2d5a3d;
+            --hyrule-gold: #c9a227;
+            --hyrule-light-gold: #e8d59a;
+            --hyrule-mist: #4a6b5a;
+            --hyrule-ancient: #1a2a22;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--hyrule-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles - like fairy dust */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--hyrule-gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float-particle 8s infinite ease-in-out;
+            box-shadow: 0 0 10px var(--hyrule-gold), 0 0 20px var(--hyrule-gold);
+        }
+
+        @keyframes float-particle {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1);
+            }
+        }
+
+        /* Generate multiple particles with different positions and delays */
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1.5s; animation-duration: 9s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 3s; animation-duration: 6s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 0.5s; animation-duration: 8s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 2s; animation-duration: 10s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 4s; animation-duration: 7s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 1s; animation-duration: 9s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 3.5s; animation-duration: 6s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 2.5s; animation-duration: 8s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 5s; animation-duration: 11s; }
+        .particle:nth-child(11) { left: 35%; animation-delay: 6s; animation-duration: 7s; }
+        .particle:nth-child(12) { left: 55%; animation-delay: 4.5s; animation-duration: 9s; }
+        .particle:nth-child(13) { left: 75%; animation-delay: 7s; animation-duration: 8s; }
+        .particle:nth-child(14) { left: 85%; animation-delay: 5.5s; animation-duration: 10s; }
+        .particle:nth-child(15) { left: 25%; animation-delay: 8s; animation-duration: 6s; }
+
+        /* Subtle fog overlay */
+        .fog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(45, 90, 61, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(45, 90, 61, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(26, 42, 34, 0.8) 0%, transparent 70%);
+            pointer-events: none;
+            animation: fog-drift 20s infinite ease-in-out alternate;
+        }
+
+        @keyframes fog-drift {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* Main content */
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Triforce-inspired decorative element */
+        .emblem {
+            width: 60px;
+            height: 52px;
+            margin: 0 auto 40px;
+            position: relative;
+            opacity: 0;
+            animation: emblem-appear 2s ease-out 0.5s forwards;
+        }
+
+        .emblem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 52px solid var(--hyrule-gold);
+            filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.5));
+        }
+
+        @keyframes emblem-appear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Glowing pulse on emblem */
+        .emblem::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 52px solid var(--hyrule-light-gold);
+            opacity: 0;
+            animation: emblem-pulse 3s ease-in-out infinite;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes emblem-pulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.6; }
+        }
+
+        .name {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-weight: 600;
+            color: var(--hyrule-light-gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 40px rgba(201, 162, 39, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: text-reveal 1.5s ease-out 1s forwards;
+        }
+
+        @keyframes text-reveal {
+            0% {
+                opacity: 0;
+                letter-spacing: 0.4em;
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                letter-spacing: 0.15em;
+                filter: blur(0);
+            }
+        }
+
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--hyrule-mist);
+            letter-spacing: 0.3em;
+            opacity: 0;
+            animation: fade-in 2s ease-out 1.8s forwards;
+        }
+
+        .tagline .dots {
+            color: var(--hyrule-gold);
+            animation: dots-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes dots-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; text-shadow: 0 0 10px var(--hyrule-gold); }
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Decorative corner borders */
+        .corner {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border-color: var(--hyrule-gold);
+            border-style: solid;
+            opacity: 0;
+            animation: corner-appear 1s ease-out 2.5s forwards;
+        }
+
+        .corner--tl {
+            top: 30px;
+            left: 30px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .corner--tr {
+            top: 30px;
+            right: 30px;
+            border-width: 2px 2px 0 0;
+        }
+
+        .corner--bl {
+            bottom: 30px;
+            left: 30px;
+            border-width: 0 0 2px 2px;
+        }
+
+        .corner--br {
+            bottom: 30px;
+            right: 30px;
+            border-width: 0 2px 2px 0;
+        }
+
+        @keyframes corner-appear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+        }
+
+        /* Small diamond accents in corners */
+        .corner::after {
+            content: '◆';
+            position: absolute;
+            font-size: 8px;
+            color: var(--hyrule-gold);
+        }
+
+        .corner--tl::after { top: -4px; left: -4px; }
+        .corner--tr::after { top: -4px; right: -4px; }
+        .corner--bl::after { bottom: -4px; left: -4px; }
+        .corner--br::after { bottom: -4px; right: -4px; }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .corner {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .corner--tl, .corner--tr { top: 20px; }
+            .corner--bl, .corner--br { bottom: 20px; }
+            .corner--tl, .corner--bl { left: 20px; }
+            .corner--tr, .corner--br { right: 20px; }
+
+            .emblem {
+                width: 40px;
+                height: 35px;
+                margin-bottom: 30px;
+            }
+
+            .emblem::before,
+            .emblem::after {
+                border-left-width: 20px;
+                border-right-width: 20px;
+                border-bottom-width: 35px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Coming soon</h1>
+    <!-- Floating particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Fog overlay -->
+    <div class="fog"></div>
+
+    <!-- Corner decorations -->
+    <div class="corner corner--tl"></div>
+    <div class="corner corner--tr"></div>
+    <div class="corner corner--bl"></div>
+    <div class="corner corner--br"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="emblem"></div>
+        <h1 class="name">Pablo Armijos</h1>
+        <p class="tagline"><span class="dots">...</span> since 1997</p>
+    </div>
 </body>
 </html>
