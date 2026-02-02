@@ -234,6 +234,39 @@
             }
         }
 
+        /* Contact button */
+        .contact-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            background: transparent;
+            border: 1px solid var(--hyrule-gold);
+            color: var(--hyrule-light-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            padding: 12px 24px;
+            cursor: pointer;
+            opacity: 0;
+            animation: fade-in 1s ease-out 2.5s forwards;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background: var(--hyrule-gold);
+            color: var(--hyrule-dark);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+        }
+
+        .contact-btn::before {
+            content: '◆';
+            margin-right: 10px;
+            font-size: 0.6rem;
+            vertical-align: middle;
+        }
+
         /* Decorative corner borders */
         .corner {
             position: fixed;
@@ -246,7 +279,7 @@
         }
 
         .corner--tl {
-            top: 30px;
+            top: 100px;
             left: 30px;
             border-width: 2px 0 0 2px;
         }
@@ -343,6 +376,9 @@
     <!-- Fog overlay -->
     <div class="fog"></div>
 
+    <!-- Contact button -->
+    <a href="mailto:pfarmijos@gmail.com" class="contact-btn">Contact</a>
+
     <!-- Corner decorations -->
     <div class="corner corner--tl"></div>
     <div class="corner corner--tr"></div>
@@ -357,3 +393,4 @@
     </div>
 </body>
 </html>
+
