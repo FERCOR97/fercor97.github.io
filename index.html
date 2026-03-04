@@ -34,20 +34,17 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; overflow: hidden;
         }
-
         .particle {
             position: absolute; width: 4px; height: 4px;
             background: var(--hyrule-gold); border-radius: 50%; opacity: 0;
             animation: float-particle 8s infinite ease-in-out;
             box-shadow: 0 0 10px var(--hyrule-gold), 0 0 20px var(--hyrule-gold);
         }
-
         @keyframes float-particle {
             0%, 100% { opacity: 0; transform: translateY(100vh) scale(0); }
             10% { opacity: 0.8; } 90% { opacity: 0.8; }
             100% { opacity: 0; transform: translateY(-100px) scale(1); }
         }
-
         .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
         .particle:nth-child(2) { left: 20%; animation-delay: 1.5s; animation-duration: 9s; }
         .particle:nth-child(3) { left: 30%; animation-delay: 3s; animation-duration: 6s; }
@@ -66,41 +63,32 @@
 
         .fog {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: 
+            background:
                 radial-gradient(ellipse at 20% 80%, rgba(45, 90, 61, 0.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 20%, rgba(45, 90, 61, 0.1) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 50%, rgba(26, 42, 34, 0.8) 0%, transparent 70%);
             pointer-events: none;
             animation: fog-drift 20s infinite ease-in-out alternate;
         }
-
         @keyframes fog-drift { 0% { opacity: 0.6; } 100% { opacity: 1; } }
 
-        /* ===== FROG ===== */
-        .frog-container {
+        /* FROG */
+        #frogCanvas {
             position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 6;
             pointer-events: none;
-            transition: none;
-            filter: drop-shadow(0 4px 12px rgba(201, 162, 39, 0.25));
-        }
-
-        .frog-container svg {
-            width: 50px;
-            height: 50px;
         }
 
         /* Main content */
-        .container {
-            text-align: center; z-index: 10; position: relative;
-        }
+        .container { text-align: center; z-index: 10; position: relative; }
 
         .emblem {
             width: 60px; height: 52px; margin: 0 auto 40px;
             position: relative; opacity: 0;
             animation: emblem-appear 2s ease-out 0.5s forwards;
         }
-
         .emblem::before {
             content: ''; position: absolute; top: 0; left: 50%;
             transform: translateX(-50%); width: 0; height: 0;
@@ -108,12 +96,10 @@
             border-bottom: 52px solid var(--hyrule-gold);
             filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.5));
         }
-
         @keyframes emblem-appear {
             0% { opacity: 0; transform: scale(0.5) translateY(-20px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
-
         .emblem::after {
             content: ''; position: absolute; top: 0; left: 50%;
             transform: translateX(-50%); width: 0; height: 0;
@@ -121,7 +107,6 @@
             border-bottom: 52px solid var(--hyrule-light-gold);
             opacity: 0; animation: emblem-pulse 3s ease-in-out infinite; animation-delay: 2.5s;
         }
-
         @keyframes emblem-pulse { 0%, 100% { opacity: 0; } 50% { opacity: 0.6; } }
 
         .name {
@@ -133,12 +118,10 @@
             text-shadow: 0 0 40px rgba(201, 162, 39, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
             opacity: 0; animation: text-reveal 1.5s ease-out 1s forwards;
         }
-
         @keyframes text-reveal {
             0% { opacity: 0; letter-spacing: 0.4em; filter: blur(10px); }
             100% { opacity: 1; letter-spacing: 0.15em; filter: blur(0); }
         }
-
         @keyframes fade-in {
             0% { opacity: 0; transform: translateY(10px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -155,7 +138,6 @@
             display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
             opacity: 0; animation: fade-in 1.5s ease-out 1.8s forwards; padding: 0 20px;
         }
-
         .nav-link {
             position: relative; display: inline-flex; align-items: center;
             justify-content: center; padding: 16px 32px; background: transparent;
@@ -164,7 +146,6 @@
             letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
             cursor: pointer; transition: all 0.4s ease; overflow: hidden;
         }
-
         .nav-link::before {
             content: ''; position: absolute; top: 0; left: -100%;
             width: 100%; height: 100%;
@@ -172,20 +153,17 @@
             transition: left 0.5s ease;
         }
         .nav-link:hover::before { left: 100%; }
-
         .nav-link::after {
             content: ''; position: absolute; inset: 3px;
             border: 1px solid rgba(201, 162, 39, 0.1);
             transition: all 0.4s ease; pointer-events: none;
         }
-
         .nav-link:hover {
             background: rgba(201, 162, 39, 0.12); border-color: var(--hyrule-gold);
             box-shadow: 0 0 25px rgba(201, 162, 39, 0.15), inset 0 0 25px rgba(201, 162, 39, 0.05);
             transform: translateY(-2px);
         }
         .nav-link:hover::after { border-color: rgba(201, 162, 39, 0.3); }
-
         .nav-link .diamond {
             font-size: 0.5rem; margin-right: 12px; opacity: 0.6;
             transition: opacity 0.4s ease;
@@ -217,7 +195,6 @@
         .corner--tr { top: 30px; right: 30px; border-width: 2px 2px 0 0; }
         .corner--bl { bottom: 30px; left: 30px; border-width: 0 0 2px 2px; }
         .corner--br { bottom: 30px; right: 30px; border-width: 0 2px 2px 0; }
-
         @keyframes corner-appear {
             0% { opacity: 0; transform: scale(0.5); }
             100% { opacity: 0.4; transform: scale(1); }
@@ -258,90 +235,8 @@
 
     <div class="fog"></div>
 
-    <!-- THE FROG -->
-    <div class="frog-container" id="frog">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="frogBody" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#d4a832" />
-                    <stop offset="50%" style="stop-color:#c9a227" />
-                    <stop offset="100%" style="stop-color:#a8871d" />
-                </linearGradient>
-                <linearGradient id="frogBelly" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#e8d59a" />
-                    <stop offset="100%" style="stop-color:#d4b84a" />
-                </linearGradient>
-                <radialGradient id="eyeShine">
-                    <stop offset="0%" style="stop-color:#fff;stop-opacity:0.9" />
-                    <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
-                </radialGradient>
-            </defs>
-
-            <!-- Shadow -->
-            <ellipse cx="50" cy="88" rx="22" ry="5" fill="rgba(0,0,0,0.25)" />
-
-            <!-- Back legs -->
-            <ellipse cx="28" cy="78" rx="12" ry="7" fill="#b8941f" transform="rotate(-15, 28, 78)" />
-            <ellipse cx="72" cy="78" rx="12" ry="7" fill="#b8941f" transform="rotate(15, 72, 78)" />
-            <!-- Back feet -->
-            <ellipse cx="18" cy="83" rx="8" ry="4" fill="#a8871d" />
-            <ellipse cx="82" cy="83" rx="8" ry="4" fill="#a8871d" />
-            <!-- Toe lines -->
-            <line x1="12" y1="82" x2="10" y2="80" stroke="#8a6d15" stroke-width="0.8" opacity="0.5" />
-            <line x1="16" y1="81" x2="14" y2="78" stroke="#8a6d15" stroke-width="0.8" opacity="0.5" />
-            <line x1="84" y1="81" x2="86" y2="78" stroke="#8a6d15" stroke-width="0.8" opacity="0.5" />
-            <line x1="88" y1="82" x2="90" y2="80" stroke="#8a6d15" stroke-width="0.8" opacity="0.5" />
-
-            <!-- Body -->
-            <ellipse cx="50" cy="65" rx="26" ry="22" fill="url(#frogBody)" />
-
-            <!-- Belly -->
-            <ellipse cx="50" cy="72" rx="18" ry="12" fill="url(#frogBelly)" opacity="0.5" />
-
-            <!-- Body spots -->
-            <circle cx="38" cy="58" r="3" fill="#b8941f" opacity="0.4" />
-            <circle cx="60" cy="55" r="2.5" fill="#b8941f" opacity="0.3" />
-            <circle cx="45" cy="68" r="2" fill="#b8941f" opacity="0.3" />
-
-            <!-- Front legs -->
-            <ellipse cx="32" cy="80" rx="6" ry="4" fill="#c9a227" transform="rotate(-5, 32, 80)" />
-            <ellipse cx="68" cy="80" rx="6" ry="4" fill="#c9a227" transform="rotate(5, 68, 80)" />
-            <!-- Front feet -->
-            <ellipse cx="26" cy="83" rx="5" ry="3" fill="#b8941f" />
-            <ellipse cx="74" cy="83" rx="5" ry="3" fill="#b8941f" />
-
-            <!-- Head -->
-            <ellipse cx="50" cy="45" rx="24" ry="18" fill="url(#frogBody)" />
-
-            <!-- Smile -->
-            <path d="M40 52 Q50 58 60 52" stroke="#8a6d15" stroke-width="1.2" fill="none" opacity="0.5" />
-
-            <!-- Nostrils -->
-            <circle cx="44" cy="47" r="1.2" fill="#8a6d15" opacity="0.4" />
-            <circle cx="56" cy="47" r="1.2" fill="#8a6d15" opacity="0.4" />
-
-            <!-- Eye bumps -->
-            <circle cx="36" cy="34" r="12" fill="#d4a832" />
-            <circle cx="64" cy="34" r="12" fill="#d4a832" />
-
-            <!-- Eye whites -->
-            <circle cx="36" cy="33" r="9" fill="#f5f0d0" />
-            <circle cx="64" cy="33" r="9" fill="#f5f0d0" />
-
-            <!-- Pupils (will be animated with JS) -->
-            <circle id="pupilL" cx="37" cy="33" r="5" fill="#1a1a0a" />
-            <circle id="pupilR" cx="65" cy="33" r="5" fill="#1a1a0a" />
-
-            <!-- Eye shine -->
-            <circle cx="34" cy="30" r="2.5" fill="url(#eyeShine)" />
-            <circle cx="62" cy="30" r="2.5" fill="url(#eyeShine)" />
-
-            <!-- Tiny sparkle on body -->
-            <circle cx="55" cy="60" r="1" fill="#fff" opacity="0.3">
-                <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0.3;0.6;0.3" />
-            </circle>
-        </svg>
-    </div>
+    <!-- Frog canvas -->
+    <canvas id="frogCanvas"></canvas>
 
     <a href="contact.html" class="contact-btn">Contact</a>
 
@@ -361,164 +256,338 @@
         </nav>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const frog = document.getElementById('frog');
-        const pupilL = document.getElementById('pupilL');
-        const pupilR = document.getElementById('pupilR');
+    <script>
+        // ===== GOLDEN FROG ON CANVAS =====
+        const canvas = document.getElementById('frogCanvas');
+        const ctx = canvas.getContext('2d');
 
-        let frogX = Math.random() * 80 + 10;
-        let frogY = Math.random() * 60 + 20;
-        let facingRight = true;
-        let isJumping = false;
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
 
-        // Position frog initially
-        frog.style.left = frogX + '%';
-        frog.style.top = frogY + '%';
-        frog.style.opacity = '0.55';
+        // Frog state
+        const frog = {
+            x: Math.random() * (window.innerWidth - 100) + 50,
+            y: Math.random() * (window.innerHeight - 100) + 50,
+            targetX: 0,
+            targetY: 0,
+            size: 40,
+            facingRight: true,
+            // Jump
+            isJumping: false,
+            jumpProgress: 0,
+            jumpStartX: 0,
+            jumpStartY: 0,
+            jumpPeakY: 0,
+            // Squash & stretch
+            scaleX: 1,
+            scaleY: 1,
+            // Eyes
+            pupilOffX: 0,
+            pupilOffY: 0,
+            pupilTargetX: 0,
+            pupilTargetY: 0,
+            // Blink
+            eyeOpenness: 1,
+            isBlinking: false,
+            // Idle
+            idleTilt: 0,
+            idleTiltTarget: 0,
+            // Breathing
+            breathPhase: 0,
+            // State
+            state: 'idle', // idle, preparing, jumping, landing
+            stateTimer: 2000 + Math.random() * 3000,
+            opacity: 0.55
+        };
 
-        // Curious looking around - pupils follow random points
-        let lookTarget = { x: 0, y: 0 };
-        let currentLook = { x: 0, y: 0 };
+        function rand(min, max) { return Math.random() * (max - min) + min; }
+        function lerp(a, b, t) { return a + (b - a) * t; }
 
-        function pickNewLookTarget() {
-            lookTarget.x = (Math.random() - 0.5) * 5;
-            lookTarget.y = (Math.random() - 0.5) * 4;
+        // Pick new jump target
+        function pickTarget() {
+            frog.targetX = rand(60, canvas.width - 60);
+            frog.targetY = rand(60, canvas.height - 60);
         }
 
-        function updateEyes() {
-            // Smoothly lerp toward target
-            currentLook.x += (lookTarget.x - currentLook.x) * 0.08;
-            currentLook.y += (lookTarget.y - currentLook.y) * 0.08;
+        // Draw the frog
+        function drawFrog() {
+            ctx.save();
+            ctx.translate(frog.x, frog.y);
+            ctx.globalAlpha = frog.opacity;
 
-            pupilL.setAttribute('cx', 37 + currentLook.x);
-            pupilL.setAttribute('cy', 33 + currentLook.y);
-            pupilR.setAttribute('cx', 65 + currentLook.x);
-            pupilR.setAttribute('cy', 33 + currentLook.y);
+            // Flip if facing left
+            const dir = frog.facingRight ? 1 : -1;
+            ctx.scale(dir * frog.scaleX, frog.scaleY);
 
-            requestAnimationFrame(updateEyes);
-        }
+            // Idle tilt
+            ctx.rotate(frog.idleTilt * Math.PI / 180);
 
-        updateEyes();
+            const s = frog.size;
+            const breath = Math.sin(frog.breathPhase) * 1.5;
 
-        // Change where the frog looks every 1-3 seconds
-        function lookAround() {
-            pickNewLookTarget();
-            setTimeout(lookAround, 1000 + Math.random() * 2000);
-        }
-        lookAround();
+            // Shadow
+            ctx.fillStyle = 'rgba(0,0,0,0.2)';
+            ctx.beginPath();
+            ctx.ellipse(0, s * 0.45, s * 0.45, s * 0.1, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-        // Blink animation
-        function blink() {
-            const eyeWhites = frog.querySelectorAll('circle[fill="#f5f0d0"]');
-            const pupils = [pupilL, pupilR];
-            const shines = frog.querySelectorAll('circle[fill="url(#eyeShine)"]');
+            // Back legs
+            ctx.fillStyle = '#b8941f';
+            ctx.beginPath();
+            ctx.ellipse(-s * 0.4, s * 0.25, s * 0.28, s * 0.13, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(s * 0.4, s * 0.25, s * 0.28, s * 0.13, 0.3, 0, Math.PI * 2);
+            ctx.fill();
 
-            // Close eyes
-            eyeWhites.forEach(e => { e.setAttribute('ry', '1'); });
-            pupils.forEach(p => { p.style.opacity = '0'; });
-            shines.forEach(s => { s.style.opacity = '0'; });
+            // Back feet
+            ctx.fillStyle = '#a8871d';
+            ctx.beginPath();
+            ctx.ellipse(-s * 0.58, s * 0.32, s * 0.15, s * 0.07, -0.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(s * 0.58, s * 0.32, s * 0.15, s * 0.07, 0.2, 0, Math.PI * 2);
+            ctx.fill();
 
-            setTimeout(() => {
-                // Open eyes
-                eyeWhites.forEach(e => { e.setAttribute('ry', '9'); });
-                pupils.forEach(p => { p.style.opacity = '1'; });
-                shines.forEach(s => { s.style.opacity = '1'; });
-            }, 150);
+            // Body
+            const bodyGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 0.5);
+            bodyGrad.addColorStop(0, '#d4a832');
+            bodyGrad.addColorStop(0.6, '#c9a227');
+            bodyGrad.addColorStop(1, '#a8871d');
+            ctx.fillStyle = bodyGrad;
+            ctx.beginPath();
+            ctx.ellipse(0, s * 0.05, s * 0.42 + breath, s * 0.38 + breath, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-            // Next blink
-            setTimeout(blink, 2000 + Math.random() * 4000);
-        }
-        setTimeout(blink, 3000);
+            // Belly
+            ctx.fillStyle = 'rgba(232, 213, 154, 0.35)';
+            ctx.beginPath();
+            ctx.ellipse(0, s * 0.15, s * 0.28, s * 0.2, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-        // Jump to new position
-        function jump() {
-            if (isJumping) return;
-            isJumping = true;
+            // Body spots
+            ctx.fillStyle = 'rgba(184, 148, 31, 0.3)';
+            ctx.beginPath(); ctx.arc(-s * 0.15, -s * 0.1, s * 0.06, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(s * 0.18, -s * 0.15, s * 0.05, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(s * 0.05, s * 0.1, s * 0.04, 0, Math.PI * 2); ctx.fill();
 
-            const newX = Math.random() * 80 + 5;
-            const newY = Math.random() * 60 + 15;
-            const dx = newX - frogX;
+            // Front legs
+            ctx.fillStyle = '#c9a227';
+            ctx.beginPath();
+            ctx.ellipse(-s * 0.3, s * 0.3, s * 0.12, s * 0.07, -0.1, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(s * 0.3, s * 0.3, s * 0.12, s * 0.07, 0.1, 0, Math.PI * 2);
+            ctx.fill();
 
-            // Face direction of jump
-            if (dx < 0 && facingRight) {
-                frog.querySelector('svg').style.transform = 'scaleX(-1)';
-                facingRight = false;
-            } else if (dx > 0 && !facingRight) {
-                frog.querySelector('svg').style.transform = 'scaleX(1)';
-                facingRight = true;
+            // Front feet
+            ctx.fillStyle = '#b8941f';
+            ctx.beginPath();
+            ctx.ellipse(-s * 0.38, s * 0.34, s * 0.09, s * 0.05, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(s * 0.38, s * 0.34, s * 0.09, s * 0.05, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Head
+            const headGrad = ctx.createRadialGradient(0, -s * 0.2, 0, 0, -s * 0.2, s * 0.4);
+            headGrad.addColorStop(0, '#d4a832');
+            headGrad.addColorStop(1, '#b89a25');
+            ctx.fillStyle = headGrad;
+            ctx.beginPath();
+            ctx.ellipse(0, -s * 0.2, s * 0.38, s * 0.3, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Smile
+            ctx.strokeStyle = 'rgba(138, 109, 21, 0.45)';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(0, -s * 0.12, s * 0.18, 0.2, Math.PI - 0.2);
+            ctx.stroke();
+
+            // Nostrils
+            ctx.fillStyle = 'rgba(138, 109, 21, 0.35)';
+            ctx.beginPath(); ctx.arc(-s * 0.08, -s * 0.18, s * 0.025, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(s * 0.08, -s * 0.18, s * 0.025, 0, Math.PI * 2); ctx.fill();
+
+            // Eye bumps
+            ctx.fillStyle = '#d4a832';
+            ctx.beginPath(); ctx.arc(-s * 0.2, -s * 0.38, s * 0.19, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(s * 0.2, -s * 0.38, s * 0.19, 0, Math.PI * 2); ctx.fill();
+
+            // Eye whites
+            const eyeH = s * 0.15 * frog.eyeOpenness;
+            ctx.fillStyle = '#f5f0d0';
+            ctx.beginPath();
+            ctx.ellipse(-s * 0.2, -s * 0.39, s * 0.14, eyeH, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(s * 0.2, -s * 0.39, s * 0.14, eyeH, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Pupils (if eyes open)
+            if (frog.eyeOpenness > 0.3) {
+                ctx.fillStyle = '#1a1a0a';
+                const ps = s * 0.09;
+                ctx.beginPath();
+                ctx.arc(-s * 0.2 + frog.pupilOffX * s * 0.06, -s * 0.39 + frog.pupilOffY * s * 0.04, ps, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(s * 0.2 + frog.pupilOffX * s * 0.06, -s * 0.39 + frog.pupilOffY * s * 0.04, ps, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Eye shine
+                ctx.fillStyle = 'rgba(255,255,255,0.7)';
+                ctx.beginPath();
+                ctx.arc(-s * 0.23, -s * 0.43, s * 0.045, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(s * 0.17, -s * 0.43, s * 0.045, 0, Math.PI * 2);
+                ctx.fill();
             }
 
-            // Prepare to jump - squash
-            frog.style.transition = 'transform 0.15s ease-in';
-            frog.style.transform = 'scaleY(0.75) scaleX(1.15)';
+            // Golden glow
+            ctx.shadowColor = 'rgba(201, 162, 39, 0.15)';
+            ctx.shadowBlur = 20;
 
-            setTimeout(() => {
-                // Jump arc
-                const midX = (frogX + newX) / 2;
-                const midY = Math.min(frogY, newY) - 15 - Math.random() * 10;
+            ctx.restore();
+        }
+
+        // Animation timers
+        let lastTime = 0;
+        let lookTimer = 0;
+        let blinkTimer = 2000 + rand(1000, 3000);
+        let jumpTimer = 2000 + rand(2000, 4000);
+        let tiltTimer = 4000 + rand(2000, 4000);
+
+        function update(dt) {
+            // Breathing
+            frog.breathPhase += dt * 0.002;
+
+            // Smooth eye movement
+            frog.pupilOffX = lerp(frog.pupilOffX, frog.pupilTargetX, 0.06);
+            frog.pupilOffY = lerp(frog.pupilOffY, frog.pupilTargetY, 0.06);
+
+            // Smooth tilt
+            frog.idleTilt = lerp(frog.idleTilt, frog.idleTiltTarget, 0.05);
+
+            // Look around timer
+            lookTimer -= dt;
+            if (lookTimer <= 0) {
+                frog.pupilTargetX = rand(-1, 1);
+                frog.pupilTargetY = rand(-0.8, 0.8);
+                lookTimer = rand(800, 2500);
+            }
+
+            // Blink timer
+            blinkTimer -= dt;
+            if (blinkTimer <= 0 && !frog.isBlinking) {
+                frog.isBlinking = true;
+                frog.eyeOpenness = 0.05;
+                setTimeout(() => {
+                    frog.eyeOpenness = 1;
+                    frog.isBlinking = false;
+                }, 150);
+                blinkTimer = rand(2000, 5000);
+            }
+
+            // Tilt timer (curious head tilts when idle)
+            tiltTimer -= dt;
+            if (tiltTimer <= 0 && frog.state === 'idle') {
+                frog.idleTiltTarget = rand(-6, 6);
+                setTimeout(() => { frog.idleTiltTarget = 0; }, rand(600, 1200));
+                tiltTimer = rand(3000, 6000);
+            }
+
+            // Jump timer
+            jumpTimer -= dt;
+            if (jumpTimer <= 0 && frog.state === 'idle') {
+                // Start jump sequence
+                pickTarget();
+                frog.facingRight = frog.targetX > frog.x;
+                frog.state = 'preparing';
+                frog.jumpStartX = frog.x;
+                frog.jumpStartY = frog.y;
+                frog.jumpProgress = 0;
+
+                // Calculate peak (higher arc for longer jumps)
+                const dist = Math.abs(frog.targetX - frog.x) + Math.abs(frog.targetY - frog.y);
+                frog.jumpPeakY = Math.min(frog.jumpStartY, frog.targetY) - dist * 0.2 - rand(30, 80);
+
+                jumpTimer = rand(3000, 7000);
+            }
+
+            // Jump state machine
+            if (frog.state === 'preparing') {
+                // Squash down before jumping
+                frog.scaleX = lerp(frog.scaleX, 1.2, 0.15);
+                frog.scaleY = lerp(frog.scaleY, 0.7, 0.15);
+                frog.jumpProgress += dt * 0.004;
+                if (frog.jumpProgress >= 1) {
+                    frog.state = 'jumping';
+                    frog.jumpProgress = 0;
+                }
+            } else if (frog.state === 'jumping') {
+                frog.jumpProgress += dt * 0.0025;
+                if (frog.jumpProgress > 1) frog.jumpProgress = 1;
+
+                // Smooth jump curve
+                const t = frog.jumpProgress;
+                const ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+                // Position along arc
+                frog.x = lerp(frog.jumpStartX, frog.targetX, ease);
+
+                // Parabolic arc for Y
+                const arcT = t;
+                const arcY = frog.jumpStartY * (1 - arcT) * (1 - arcT)
+                    + frog.jumpPeakY * 2 * (1 - arcT) * arcT
+                    + frog.targetY * arcT * arcT;
+                frog.y = arcY;
 
                 // Stretch during jump
-                frog.style.transition = 'left 0.4s cubic-bezier(0.2, 0.8, 0.3, 1), top 0.4s cubic-bezier(0.2, 0.8, 0.3, 1), transform 0.1s ease';
-                frog.style.transform = 'scaleY(1.2) scaleX(0.85)';
+                frog.scaleX = lerp(frog.scaleX, 0.85, 0.1);
+                frog.scaleY = lerp(frog.scaleY, 1.2, 0.1);
 
-                // First half - go to midpoint (arc up)
-                frog.style.transition = 'left 0.25s ease-out, top 0.25s ease-out, transform 0.1s ease';
-                frog.style.left = midX + '%';
-                frog.style.top = midY + '%';
-
-                setTimeout(() => {
-                    // Second half - land
-                    frog.style.transition = 'left 0.25s ease-in, top 0.25s ease-in, transform 0.1s ease';
-                    frog.style.left = newX + '%';
-                    frog.style.top = newY + '%';
-
-                    setTimeout(() => {
-                        // Landing squash
-                        frog.style.transition = 'transform 0.1s ease';
-                        frog.style.transform = 'scaleY(0.8) scaleX(1.15)';
-
-                        setTimeout(() => {
-                            // Return to normal
-                            frog.style.transition = 'transform 0.3s ease-out';
-                            frog.style.transform = 'scaleY(1) scaleX(1)';
-
-                            frogX = newX;
-                            frogY = newY;
-                            isJumping = false;
-
-                            // Look around after landing
-                            pickNewLookTarget();
-                        }, 100);
-                    }, 250);
-                }, 250);
-            }, 200);
-        }
-
-        // Jump every 3-7 seconds
-        function scheduleJump() {
-            const delay = 3000 + Math.random() * 4000;
-            setTimeout(() => {
-                jump();
-                scheduleJump();
-            }, delay);
-        }
-
-        // Start after a small delay
-        setTimeout(scheduleJump, 2000);
-
-        // Occasionally do a little head tilt (curious searching behavior)
-        function headTilt() {
-            if (isJumping) {
-                setTimeout(headTilt, 1000);
-                return;
-            }
-            const tilt = (Math.random() - 0.5) * 8;
-            frog.style.transition = 'transform 0.4s ease';
-            frog.style.transform = `rotate(${tilt}deg)`;
-
-            setTimeout(() => {
-                if (!isJumping) {
-                    frog.style.transition = 'transform 0.4s ease';
-                    frog.style.transform = 'rotate(0deg)';
+                if (frog.jumpProgress >= 1) {
+                    frog.state = 'landing';
+                    frog.jumpProgress = 0;
                 }
-            }, 800 + Math.random(
+            } else if (frog.state === 'landing') {
+                // Squash on landing
+                frog.scaleX = lerp(frog.scaleX, 1.2, 0.2);
+                frog.scaleY = lerp(frog.scaleY, 0.75, 0.2);
+                frog.jumpProgress += dt * 0.005;
+                if (frog.jumpProgress >= 1) {
+                    frog.state = 'idle';
+                    // Look around after landing
+                    frog.pupilTargetX = rand(-1, 1);
+                    frog.pupilTargetY = rand(-0.8, 0.8);
+                }
+            } else {
+                // Idle - return to normal scale
+                frog.scaleX = lerp(frog.scaleX, 1, 0.08);
+                frog.scaleY = lerp(frog.scaleY, 1, 0.08);
+            }
+        }
+
+        function loop(timestamp) {
+            const dt = lastTime ? timestamp - lastTime : 16;
+            lastTime = timestamp;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            update(dt);
+            drawFrog();
+
+            requestAnimationFrame(loop);
+        }
+
+        requestAnimationFrame(loop);
+    </script>
+</body>
+</html>
