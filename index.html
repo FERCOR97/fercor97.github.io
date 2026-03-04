@@ -343,7 +343,7 @@
         </svg>
     </div>
 
-    <a href="mailto:pfarmijos@gmail.com" class="contact-btn">Contact</a>
+    <a href="contact.html" class="contact-btn">Contact</a>
 
     <div class="corner corner--tl"></div>
     <div class="corner corner--tr"></div>
@@ -361,7 +361,7 @@
         </nav>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const frog = document.getElementById('frog');
         const pupilL = document.getElementById('pupilL');
         const pupilR = document.getElementById('pupilR');
@@ -521,11 +521,4 @@
                     frog.style.transition = 'transform 0.4s ease';
                     frog.style.transform = 'rotate(0deg)';
                 }
-            }, 800 + Math.random() * 600);
-
-            setTimeout(headTilt, 4000 + Math.random() * 5000);
-        }
-        setTimeout(headTilt, 5000);
-    </script>
-</body>
-</html>
+            }, 800 + Math.random(
